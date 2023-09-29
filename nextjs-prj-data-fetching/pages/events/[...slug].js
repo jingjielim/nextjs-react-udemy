@@ -19,8 +19,6 @@ function FilteredEventsPage() {
     (url) => fetch(url).then((res) => res.json())
   );
 
-  console.log(data);
-
   useEffect(() => {
     if (data) {
       const events = [];

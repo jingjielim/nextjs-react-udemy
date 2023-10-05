@@ -1,13 +1,15 @@
 import { useRef } from "react";
 
 function HomePage() {
-  const emailInputRef = useRef();
-  const feedbackInputRef = useRef();
+  const emailInputRef = useRef(); // create a reference to the input field
+  const feedbackInputRef = useRef(); // create a reference to the textarea
 
   function submitFormHandler(event) {
-    event.preventDefault();
-    const enteredEmail = emailInputRef.current.value;
-    const enteredFeedback = feedbackInputRef.current.value;
+    event.preventDefault(); // prevent the page from reloading after submitting the form
+    const enteredEmail = emailInputRef.current.value; // get the value of the input field
+    const enteredFeedback = feedbackInputRef.current.value; // get the value of the textarea
+
+    fetch() // send the email and feedback to the server
   }
 
   return (

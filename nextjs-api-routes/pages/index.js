@@ -9,7 +9,17 @@ function HomePage() {
     const enteredEmail = emailInputRef.current.value; // get the value of the input field
     const enteredFeedback = feedbackInputRef.current.value; // get the value of the textarea
 
-    fetch() // send the email and feedback to the server
+    const reqBody = { email: enteredEmail, text: enteredFeedback };
+    fetch("/api/feedback", {
+      method: "POST",
+      body: JSON.stringify(reqBody),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+    // send the email and feedback to the server
   }
 
   return (
@@ -24,6 +34,7 @@ function HomePage() {
           <label htmlFor="feedback">Your feedback</label>
           <textarea id="feedback" rows="5" ref={feedbackInputRef}></textarea>
         </div>
+        <button>Send Feedback</button>
       </form>
     </div>
   );

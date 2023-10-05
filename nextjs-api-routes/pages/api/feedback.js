@@ -4,7 +4,7 @@ import fs from "fs";
 function handler(req, res) {
   if (req.method === "POST") {
     const email = req.body.email;
-    const feedbackText = req.body.feedbackText;
+    const feedbackText = req.body.text;
 
     const newFeedback = {
       id: new Date().toISOString(),
@@ -17,7 +17,7 @@ function handler(req, res) {
     const fileData = fs.readFileSync(filePath);
     const data = JSON.parse(fileData);
     data.push(newFeedback);
-    fs.writeFileSync(data);
+    fs.writeFileSync(filePath, JSON.stringify(data));
     res.status(200).json({ message: "Success!", feedback: newFeedback });
   } else {
     res.status(200).json({ message: "This works!" });
